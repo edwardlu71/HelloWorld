@@ -2,20 +2,19 @@ pipeline {
     agent { 
         node {
             label 'sshagent'
-            }
-      }
+        }
+    }
     triggers {
         pollSCM '*/5 * * * *'
     }
 
-    tools {
-      jdk 'jdk_1.8.0_151'
-    }
     stages {
 	stage('SonarQube Code Analysis') {
             steps {
                 dir("${WORKSPACE}"){
-                    sh 'java -version'
+                    withEnv(["JAVA_HOME=${tool 'openjdk_1.6.0_45'}", "PATH=${tool 'openjdk_1.6.0_45'}/bin:${env.PATH}"]) {
+                        sh 'java -version'
+                    }
                     // Run SonarQube analysis for Python
                     script {
                         def scannerHome = tool 'SonarQube Scanner 6.1.0.4477';
