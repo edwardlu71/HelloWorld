@@ -9,7 +9,7 @@ pipeline {
     }
 
     tools {
-      jdk 'jdk_17.0.10'
+      jdk 'jdk_1.8.0_151'
     }
     stages {
 	stage('SonarQube Code Analysis') {
