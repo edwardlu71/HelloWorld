@@ -15,10 +15,9 @@ pipeline {
                     sh 'java -version'
                     // Run SonarQube analysis for Python
                     script {
-                        def scannerHome = tool 'SonarQube Scanner 6.1.0.4477';
                         withSonarQubeEnv('sonar') {
                             sh "echo $pwd"
-                            sh "${scannerHome}/bin/sonar-scanner -X"
+                            sh "/home/jenkins/tools/sonar-scanner-6.1.0.4477/bin/sonar-scanner -X"
 		        }
 		    }
 	        }
