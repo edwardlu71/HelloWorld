@@ -25,11 +25,15 @@ pipeline {
 	}
         stage('Build') {
             steps {
-                echo "Building.."
-                sh '''
-                cd app
-                pip install -r requirements.txt
-                '''
+                dir("${WORKSPACE}"){
+                    echo "Building.."
+                    sh '''
+                      python3 -m venv ./venv
+                      source venv/bin/activate
+                      cd app
+                      pip install -r requirements.txt
+                    '''
+                }
             }
         }
         stage('Test') {
