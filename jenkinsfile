@@ -15,6 +15,7 @@ pipeline {
 	stage('SonarQube Code Analysis') {
             steps {
                 dir("${WORKSPACE}"){
+                    sh 'java -version'
                     // Run SonarQube analysis for Python
                     script {
                         def scannerHome = tool 'SonarQube Scanner 6.1.0.4477';
