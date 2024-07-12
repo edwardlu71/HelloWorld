@@ -17,7 +17,7 @@ pipeline {
                     script {
                         withSonarQubeEnv('sonar') {
                             sh "echo $pwd"
-                            sh "/home/jenkins/tools/sonar-scanner-6.1.0.4477/bin/sonar-scanner -X"
+                            sh "/home/jenkins/tools/sonar-scanner-6.1.0.4477/bin/sonar-scanner"
 		        }
 		    }
 	        }
@@ -27,9 +27,9 @@ pipeline {
             steps {
                 dir("${WORKSPACE}"){
                     echo "Building.."
-                    sh '''
+                    bash '''
                       python3 -m venv ./venv
-                      . venv/bin/activate
+                      source ./venv/bin/activate
                       cd app
                       pip install -r requirements.txt
                     '''
