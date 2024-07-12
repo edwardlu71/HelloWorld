@@ -7,6 +7,10 @@ pipeline {
     triggers {
         pollSCM '*/5 * * * *'
     }
+
+    tools {
+      jdk 'jdk_17.0.10'
+    }
     stages {
 	stage('SonarQube Code Analysis') {
             steps {
