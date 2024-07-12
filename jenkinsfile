@@ -28,10 +28,10 @@ pipeline {
                 dir("${WORKSPACE}"){
                     echo "Building.."
                     bash '''
-                      python3 -m venv ./venv
-                      source ./venv/bin/activate
-                      cd app
-                      pip install -r requirements.txt
+                        python3 -m venv ./venv
+                        source ./venv/bin/activate
+                        cd app
+                        pip install -r requirements.txt
                     '''
                 }
             }
@@ -39,9 +39,10 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Testing.."
-                sh '''
-                cd app
-                python3 hello.py
+                bash '''
+                    source ./venv/bin/activate
+                    cd app
+                    python hello.py
                 '''
             }
         }
@@ -49,9 +50,14 @@ pipeline {
             steps {
                 echo 'Deliver....'
                 sh '''
-                echo "doing delivery stuff.."
+                    echo "doing delivery stuff.."
                 '''
             }
+        }
+    }
+    post { 
+        always { 
+            cleanWs()
         }
     }
 }
