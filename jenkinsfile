@@ -12,9 +12,7 @@ pipeline {
 	stage('SonarQube Code Analysis') {
             steps {
                 dir("${WORKSPACE}"){
-                    withEnv(["JAVA_HOME=${tool 'openjdk_1.6.0_45'}", "PATH=${tool 'openjdk_1.6.0_45'}/bin:${env.PATH}"]) {
-                        sh 'java -version'
-                    }
+                    sh 'java -version'
                     // Run SonarQube analysis for Python
                     script {
                         def scannerHome = tool 'SonarQube Scanner 6.1.0.4477';
