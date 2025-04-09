@@ -16,7 +16,7 @@ pipeline {
                     // Run SonarQube analysis for Python
                     script {
                         def scannerHome = tool 'SonarScanner';
-                        withSonarQubeEnv('sonar') {
+                        withSonarQubeEnv('SonarEE') {
                             sh "echo $pwd"
                             sh "${scannerHome}/bin/sonar-scanner"
 		        }
