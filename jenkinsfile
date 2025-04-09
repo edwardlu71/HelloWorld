@@ -15,7 +15,7 @@ pipeline {
                     sh 'java -version'
                     // Run SonarQube analysis for Python
                     script {
-                        def scannerHome = tool name: 'sonar_scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
+                        def scannerHome = tool 'SonarScanner 4.0';
                         withSonarQubeEnv('sonar') {
                             sh "echo $pwd"
                             sh "${scannerHome}/bin/sonar-scanner"
