@@ -10,7 +10,7 @@ pipeline {
 
     stages {
 	stage('SonarQube Code Analysis') {
-            def scannerHome = tool 'SonarScanner';
+            def scannerHome = tool name: 'sonar_scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
             steps {
                 dir("${WORKSPACE}"){
                     sh 'java -version'
