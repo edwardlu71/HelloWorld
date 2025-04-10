@@ -1,12 +1,12 @@
 pipeline {
-    agent { 
-        node {
-            label 'sshagent'
-        }
-    }
-    triggers {
-        pollSCM '*/5 * * * *'
-    }
+    //agent { 
+    //    node {
+    //        label 'sshagent'
+    //    }
+    //}
+    //triggers {
+    //    pollSCM '*/5 * * * *'
+    //}
 
     stages {
 	stage('SonarQube Code Analysis') {
