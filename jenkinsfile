@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    options {
-        // Timeout counter starts AFTER agent is allocated
-        timeout(time: 2, unit: 'SECONDS')
-    }
     //agent { 
     //    node {
     //        label 'sshagent'
