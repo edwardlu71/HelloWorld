@@ -15,10 +15,11 @@ pipeline {
                     sh 'java -version'
                     // Run SonarQube analysis for Python
                     script {
-                        def scannerHome = tool 'SonarScanner';
+                        def scannerHome = tool 'SonarScannerMSBuild';
                         withSonarQubeEnv('SonarEE') {
-                            sh "echo $pwd"
-                            sh "${scannerHome}/bin/sonar-scanner"
+                            //sh "echo $pwd"
+                            //sh "${scannerHome}/bin/sonar-scanner"
+                            bat "${scannerHome}\\SonarScanner.MSBuild.exe"
 		        }
 		    }
 	        }
